@@ -1,2 +1,2 @@
 # cpphess
-Chess in the terminal. 
+This project aims to deliver chess in the terminal.
