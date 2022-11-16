@@ -6,6 +6,7 @@ class piece {
    public:
       OWNER get_owner() const;
       piece(OWNER owner); 
+      piece();
       bool is_captured() const;
 
    protected:
