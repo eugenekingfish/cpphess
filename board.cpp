@@ -9,7 +9,7 @@ void board::add_piece(const std::array<int,2>& location,
 board::board() {
    for (int i = 0; i < 8; ++i) {
       for (int j = 0; j < 8; ++j) {
-         piece p(OWNER::WHITE);
+         pawn p;
          this->board_arr[i][j] = p;
       }
    }
@@ -19,7 +19,7 @@ void board::print_board() const {
    for (int i = 0; i < 8; ++i) {
       std::cout << i+1 << "   ";
       for (int j = 0; j < 8; ++j) {
-         std::cout << "x" << " ";
+         std::cout << this->board_arr[i][j].get_piece_icon() << " ";
       }
       std::cout << std::endl;
    }

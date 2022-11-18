@@ -3,11 +3,13 @@
 piece::piece() {
    this->captured = false;
    this->owner = OWNER::WHITE;
+   this->piece_icon = '\0'; // empty char
 }
 
-piece::piece(OWNER owner) {
+piece::piece(const OWNER& owner, const char& icon) {
    this->captured = false;
    this->owner = owner;
+   this->piece_icon = icon;
 }
 
 OWNER piece::get_owner() const {
@@ -16,4 +18,8 @@ OWNER piece::get_owner() const {
 
 bool piece::is_captured() const {
    return this->captured;
+}
+
+char piece::get_piece_icon() const {
+   return this->piece_icon;
 }

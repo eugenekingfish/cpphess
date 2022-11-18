@@ -1,5 +1,6 @@
 #pragma once
 #include "piece.h"
+#include "pawn.h"
 #include <array>
 
 class board {
