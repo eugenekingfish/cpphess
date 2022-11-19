@@ -1,16 +1,14 @@
 #include "board.h"
 #include <iostream>
 
-void board::add_piece(const std::array<int,2>& location, 
-      const piece& p) {
+void board::add_piece(const std::array<int,2>& location, piece* p) {
    this->board_arr[location[0]][location[1]] = p;
 }
 
 board::board() {
    for (int i = 0; i < 8; ++i) {
       for (int j = 0; j < 8; ++j) {
-         pawn p;
-         this->board_arr[i][j] = p;
+         this->board_arr[i][j] = nullptr;
       }
    }
 }
@@ -25,7 +23,12 @@ void board::print_board(const int& padding) const {
          std::cout << " ";
 
       for (int j = 0; j < board_width; ++j) {
-         std::cout << this->board_arr[i][j].get_piece_icon() << " "; // piece icons
+         char icon = '\0';
+         if (this->board_arr[i][j] == nullptr)
+            icon = 'x';
+         else
+            icon = this->board_arr[i][j] -> get_piece_icon();
+         std::cout << icon << " "; // piece icons
       }
       std::cout << '\n';
    }
@@ -39,4 +42,10 @@ void board::print_board(const int& padding) const {
       std::cout << char(97+i) << " ";
    }
    std::cout << '\n';
+}
+
+void board::move_piece(piece* p, const std::array<int,2>& location) {
+   if (p == nullptr)
+      std::cerr << "ERROR: piece* p cannot be nullptr." << '\n';
+   this->board_arr[location[0]][location[1]] = p;
 }
