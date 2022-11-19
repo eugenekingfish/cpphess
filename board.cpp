@@ -15,12 +15,28 @@ board::board() {
    }
 }
 
-void board::print_board() const {
-   for (int i = 0; i < 8; ++i) {
-      std::cout << i+1 << "   ";
-      for (int j = 0; j < 8; ++j) {
-         std::cout << this->board_arr[i][j].get_piece_icon() << " ";
+// todo: implement padding, remove magic constants
+void board::print_board(const int& padding) const {
+   int board_width = 8;
+
+   for (int i = 0; i < board_width; ++i) {
+      std::cout << i+1; // numbers on side of board
+      for (int k = 0; k < 3; ++k)
+         std::cout << " ";
+
+      for (int j = 0; j < board_width; ++j) {
+         std::cout << this->board_arr[i][j].get_piece_icon() << " "; // piece icons
       }
-      std::cout << std::endl;
+      std::cout << '\n';
    }
+
+   // letters below board 
+   for (int i = 0; i < 1; ++i)
+      std::cout << '\n';
+   for (int i = 0; i < 4; ++i) 
+      std::cout << " ";
+   for (int i = 0; i < board_width; ++i) {
+      std::cout << char(97+i) << " ";
+   }
+   std::cout << '\n';
 }

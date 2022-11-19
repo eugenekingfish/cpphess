@@ -10,5 +10,5 @@ class board {
       void add_piece(const std::array<int,2>& location, 
             const piece& p);
       board();
-      void print_board() const;
+      void print_board(const int& padding) const;
 };
