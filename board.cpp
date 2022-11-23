@@ -3,6 +3,7 @@
 
 void board::add_piece(const std::array<int,2>& location, piece* p) {
    this->board_arr[location[0]][location[1]] = p;
+   p->set_position(location); // store the piece's position on the board
 }
 
 board::board() {
@@ -47,5 +48,10 @@ void board::print_board(const int& padding) const {
 void board::move_piece(piece* p, const std::array<int,2>& location) {
    if (p == nullptr)
       std::cerr << "ERROR: piece* p cannot be nullptr." << '\n';
-   this->board_arr[location[0]][location[1]] = p;
+
+   std::array<int,2> previous_position = p->get_position();
+
+   this->board_arr[location[0]][location[1]] = p; // update board with piece's new position
+   this->board_arr[previous_position[0]][previous_position[1]] = nullptr; // remove piece's old position from board
+   p->set_position(location); // update piece's position with it's new location
 }
