@@ -1,1 +1,1 @@
-g++ -std=c++11 piece.cpp pawn.cpp board.cpp main.cpp -o program.exe
+g++ -std=c++11 -I/source piece.cpp pawn.cpp board.cpp main.cpp -o program.exe
