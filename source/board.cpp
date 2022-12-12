@@ -55,3 +55,9 @@ void board::move_piece(piece* p, const std::array<int,2>& location) {
    this->board_arr[previous_position[0]][previous_position[1]] = nullptr; // remove piece's old position from board
    p->set_position(location); // update piece's position with it's new location
 }
+
+bool board::is_occupied(const int& x, const int& y) const {
+   if (this->board_arr[x][y] == nullptr)
+      return false;
+   return true;
+}

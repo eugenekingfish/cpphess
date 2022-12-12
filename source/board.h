@@ -11,4 +11,5 @@ class board {
       board();
       void print_board(const int& padding) const;
       void move_piece(piece* p, const std::array<int,2>& location);
+      bool is_occupied(const int& x, const int& y) const;
 };
